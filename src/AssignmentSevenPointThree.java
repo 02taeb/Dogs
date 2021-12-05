@@ -9,6 +9,11 @@ public class AssignmentSevenPointThree {
     private ArrayList<Dog> dogs = new ArrayList<>();
     private Dog nullDog;
     
+    /**
+     * Tries to find a dog with given name in local ArrayList.
+     * @param dogName String with dogs name.
+     * @return Dog with given name or if none exists Dog with value null.
+     */
     @UnderTest(id="U7.3")
     public Dog findDog(String dogName) {
         nullDog = null;
