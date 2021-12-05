@@ -10,14 +10,19 @@ import java.util.ArrayList;
     private Reader reader = new Reader();
     private double tailLengthMin;
 
+    /**
+     * Asks for a tail length and outputs dogs with given tail length in local ArrayList.
+     */
     @UnderTest(id="U7.2")
     public void handleInput() {
         if (!dogs.isEmpty()) {
             tailLengthMin = reader.readDouble("Kortast svanslängd att visa");
             ArrayList<Dog> dogsWithTailLength = searchForDogsByTailSize(tailLengthMin);
+            
             if (dogsWithTailLength.isEmpty()) {
                 System.out.println("Error: No dogs with given tail length in register");
             }
+            
             for (Dog dog : dogsWithTailLength) {
                 // System.out.println("* " + dog.getName() + "(" + dog.getBreed() + ", " + dog.getAge() + " år, " + dog.getWeight() + " kilo, " + dog.getTailLength() + " cm svans)");
                 System.out.printf("* %s (%s, %s år, %s kilo, %s cm svans.)%n", dog.getName(), dog.getBreed(), dog.getAge(), dog.getWeight(), dog.getTailLength());
@@ -27,6 +32,11 @@ import java.util.ArrayList;
         }
     }
 
+    /**
+     * Gets all the dogs with given tail length in local arraylist and returns them in new arraylist.
+     * @param tailLengthCheck double, Tail length to check.
+     * @return ArrayList<Dog> with tail length.
+     */
     @UnderTest(id="U7.2-extra")
     private ArrayList<Dog> searchForDogsByTailSize(double tailLengthCheck) {
         ArrayList<Dog> dogsWithTailLength = new ArrayList<>();
