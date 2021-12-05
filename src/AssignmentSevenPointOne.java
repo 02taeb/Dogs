@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class AssignmentSevenPointOne {
     //#region U7.1 Class variables
-    //@UnderTest(id="dogs")
+    @UnderTest(id="dogs")
     private ArrayList<Dog> dogs = new ArrayList<>();
     private Dog dogToAdd;
     //#endregion
@@ -22,7 +22,7 @@ public class AssignmentSevenPointOne {
     /**
      * Adds dog to local ArrayList. Utilizes createdog() from U6.4
      */
-    //@UnderTest(id="U7.1")
+    @UnderTest(id="U7.1")
     public void saveDogToArrayList() {
         dogToAdd = createDog();
         dogs.add(dogToAdd);
