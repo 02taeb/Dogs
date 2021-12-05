@@ -19,6 +19,9 @@ public class AssignmentSevenPointOne {
     private Dog dog;
     //#endregion
 
+    /**
+     * Adds dog to local ArrayList. Utilizes createdog() from U6.4
+     */
     @UnderTest(id="U7.1")
     public void saveDogToArrayList() {
         dogToAdd = createDog();
