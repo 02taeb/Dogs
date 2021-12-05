@@ -3,5 +3,7 @@
  * @author Lucas Ilstedt, luil7872
  */
 public class AssignmentSevenPointOne {
-    
+    public static void main(String[] args) {
+        System.out.println("Some changes made");
+    }
 }
