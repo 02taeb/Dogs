@@ -12,17 +12,17 @@ import org.junit.jupiter.api.Test;
 
 public class AssignmentSevenPointSixPointOnePointOneTest extends AssignmentSevenPointSixTest {
 
-// 	public AssignmentSevenPointSixPointOnePointOneTest() {
-// 		super("U7.6.1.1");
-// 	}
-// 
-// 	@Test
-// 	public void swapFirstAndLast() {
-// 		addDogs(BAMSE, RONJA, MOLLY);
-// 		callMethodUnderTest(sut, 0, 2);
-// 		assertDogsAre("Försök att byta plats på första och sista hunden misslyckades", //
-// 				MOLLY, RONJA, BAMSE);
-// 	}
+	// public AssignmentSevenPointSixPointOnePointOneTest() {
+	// 	super("U7.6.1.1");
+	// }
+
+	// @Test
+	// public void swapFirstAndLast() {
+	// 	addDogs(BAMSE, RONJA, MOLLY);
+	// 	callMethodUnderTest(sut, 0, 2);
+	// 	assertDogsAre("Försök att byta plats på första och sista hunden misslyckades", //
+	// 			MOLLY, RONJA, BAMSE);
+	// }
 
 	// TODO: betydligt fler test
 
