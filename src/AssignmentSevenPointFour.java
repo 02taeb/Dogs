@@ -14,6 +14,11 @@ public class AssignmentSevenPointFour {
     private Dog nullDog;
     //#endregion
 
+    /**
+     * Increases the age of dog with name asked for. 
+     * Prints error if no dog with name is found.
+     * Uses findDog(dogName) from AssignmentSevenPointThree.
+     */
     @UnderTest(id="U7.4")
     public void increaseAge() {
         String dogName = reader.readString("Vad heter hunden");
