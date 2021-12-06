@@ -5,9 +5,9 @@ public class Dog {
     //#region Class Variables
     // Stores the translations for "dachshund" in all languages.
     // Can't be bothered to add in all languages but I have implemented all the relevant code so all that's left is adding more names to the array.
-    private final String[] DACHSHUND_IN_ALL_LANGUAGES = {"dachshund", "tax", "mäyräkoira", "teckel"};
+    private static final String[] DACHSHUND_IN_ALL_LANGUAGES = {"dachshund", "tax", "mäyräkoira", "teckel"};
     // Stores the tail length for any dachshund.
-    private final double DACHSHUND_TAIL_LENGTH = 3.7;
+    private static final double DACHSHUND_TAIL_LENGTH = 3.7;
     private String name;
     private String breed;
     private int age;
