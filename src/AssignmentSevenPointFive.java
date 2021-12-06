@@ -14,6 +14,11 @@ public class AssignmentSevenPointFive {
     private Dog nullDog;
     //#endregion
 
+    /**
+     * Removes dog with name given when prompted.
+     * Prints error if no dog with name is found.
+     * Uses findDog(dogName) from AssignmentSevenPointThree.
+     */
     @UnderTest(id="U7.5")
     public void removeDog() {
         String dogName = reader.readString("Vad heter hunden");
