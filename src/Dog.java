@@ -13,6 +13,8 @@ public class Dog {
     private int age;
     private int weight;
     private double tailLength;
+    private boolean isOwned;
+    private Owner owner;
     //#endregion
 
 
@@ -117,6 +119,44 @@ public class Dog {
         }
     }
 
+    /**
+     * Sets the owner for this Dog.
+     * @param owner Owner to set.
+     * @return boolean, true if set, false if already owned.
+     */
+    @UnderTest(id="U8.3")
+    public boolean setOwner(Owner owner) {
+        if (!isOwned) {
+            this.owner = owner;
+            owner.addDogToOwner(this);
+            isOwned = true;
+            return true;
+        } else {
+            // System.out.println("Error: This dog is already owned");
+            return false;
+        }
+    }
+
+    /**
+     * Gets the owner for this Dog.
+     * @return Owner if owned, Owner with vlaue null if not owned.
+     */
+    public Owner getOwner() {
+        Owner nullOwner = null;
+        if (isOwned) {
+            return owner;
+        } else {
+            return nullOwner;
+        }
+    }
+
+    /**
+     * Gets whether this Dog is owned or not.
+     * @return boolean, true if owned, false if not.
+     */
+    public boolean isOwned() {
+        return isOwned;
+    }
 
     /**
      * Formats a string, making all characters except the first one lower case and removing spaces at beginning and end.

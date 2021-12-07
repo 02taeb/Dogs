@@ -88,6 +88,7 @@ public class Reader {
 
         System.out.print(prompt + "?>");
         text = nameCheck(scanner.nextLine());
+        // text = emptyStringCheck(text, prompt);
         
         return text;
     }
@@ -108,4 +109,18 @@ public class Reader {
         editedString = String.valueOf(editedString.charAt(0)).toUpperCase() + editedString.substring(1);
         return editedString;
     }
+
+    // TODO: Check during U9.1 and U9.2 for any place where this method should not be used.
+    // If no such places exists, go back in code and check for loops this method makes unnecessary. 
+    // Add if all empty strings should be printed to System. 
+    /*
+    private String emptyStringCheck(String s, String prompt) {
+        while (s == null || s.equals("")) {
+            System.out.println("Error: This string cannot be empty");
+            s = readString(prompt);
+        }
+
+        return s;
+    }
+    */
 }
