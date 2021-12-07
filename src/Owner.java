@@ -52,6 +52,9 @@ public class Owner {
         }
     }
 
+    /**
+     * Will "expand" local Dog[] ownedDogs if new dog is to be added.
+     */
     private void expandArray() {
         Dog[] middleStepArr = new Dog[ownedDogs.length];
 
@@ -66,6 +69,11 @@ public class Owner {
         }
     }
 
+    /**
+     * Checks if this Owner owns thisDog.
+     * @param thisDog Dog to check.
+     * @return boolean true if thisDog is owned by this Owner, else false.
+     */
     public boolean hasDog(Dog thisDog) {
         for (int i = 0; i < ownedDogs.length; i++) {
             if (ownedDogs[i].getName().equalsIgnoreCase(thisDog.getName())) {
