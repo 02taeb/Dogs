@@ -10,6 +10,11 @@ public class AssignmentEightPointTwo {
     private ArrayList<Owner> owners = new ArrayList<>();
     //#endregion
 
+    /**
+     * Finds Owner with given name in local ArrayList<Owner>.
+     * @param nameOfOwner Name of Owner to search for.
+     * @return Instance of Owner class with given name or Owner with value null if no such owner is found.
+     */
     @UnderTest(id="U8.2")
     public Owner findOwner(String nameOfOwner) {
         Owner nullOwner = null;
