@@ -19,15 +19,20 @@ public class AssignmentEightPointThree {
     private boolean runOwner = true;
     //#endregion
 
+    /**
+     * Adds a dog to an owner. Both should exist in local ArrayList<>'s.
+     */
     @UnderTest(id="U8.3")
     public void addDogToOwner() {
         setDogName();
         initialiseDog();
+        // Should only ask for owner if dog is processed correctly.
         if (runDog) {
             setOwnerName();
             initialiseOwner();
         }
         
+        // Check if both dog and owner have been processed correctly.
         if (!runDog || !runOwner) {
             System.out.println("Error: Operation Failed. Please see earlier error messages.");
         } else if (!owner.hasDog(dog) && !dog.isOwned()) {
@@ -37,6 +42,10 @@ public class AssignmentEightPointThree {
         }
     }
 
+    /**
+     * Will run findOwner() if runOwner is true.
+     * Else will print error.
+     */
     private void initialiseOwner() {
         if (runOwner) {
             runOwner = findOwner();
@@ -45,6 +54,10 @@ public class AssignmentEightPointThree {
         }
     }
 
+    /**
+     * Will run findDog() if runDog is true.
+     * Else will print error.
+     */
     private void initialiseDog() {
         if (runDog) {
             runDog = findDog();
@@ -53,27 +66,31 @@ public class AssignmentEightPointThree {
         }
     }
 
+    /**
+     * Sets nameOfDog.
+     * Will also set runDog = false if no name is entered.
+     */
     private void setDogName() {
         nameOfDog = reader.readString("Namn på hunden");
         if (nameOfDog == null || nameOfDog.equals("")) {
             runDog = false;
         }
-        // nameOfDog = emptyStringCheck(nameOfDog, "Namn på hunden");
     }
 
     /**
-     * Sets the name of owner.
+     * Sets nameOfOwner.
+     * Will also set runOwner = false if no name is entered.
      */
     private void setOwnerName() {
         nameOfOwner = reader.readString("Namn på ägaren");
         if (nameOfOwner == null || nameOfDog.equals("")) {
             runOwner = false;
         }
-        // nameOfOwner = emptyStringCheck(nameOfOwner, "Namn på ägare");
     }
 
     /**
-     * Finds an owner in local ArrayList<Owner>. 
+     * Finds an owner in local ArrayList<Owner>.
+     * @return boolean true if owner found, false if no owner found.
      */
     private boolean findOwner() {
         for (int i = 0; i < owners.size(); i++) {
@@ -89,6 +106,7 @@ public class AssignmentEightPointThree {
 
     /**
      * Finds a dog in local ArrayList<Dog>.
+     * @return boolean true if dog with no owner found, false if dog already has owner or no dog found.
      */
     private boolean findDog() {
         for (int i = 0; i < dogs.size(); i++) {
@@ -105,20 +123,5 @@ public class AssignmentEightPointThree {
 
         System.out.println("Error: No such dog in registry."); 
         return false;
-    }
-
-    /**
-     * Checks whether given string is empty.
-     * @param s String to check.
-     * @param prompt Prompt to ask again if string is empty.
-     * @return Non-null and Non-whitespace string.
-     */
-    private String emptyStringCheck(String s, String prompt) {
-        while (s == null || s.equals("")) {
-            System.out.println("Error: This string cannot be empty");
-            s = reader.readString(prompt);
-        }
-
-        return s;
     }
 }
