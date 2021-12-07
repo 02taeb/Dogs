@@ -15,15 +15,14 @@ public class AssignmentEightPointThree {
     private String nameOfOwner;
     private Owner owner;
     private Dog dog;
+    private boolean runDog = true;
+    private boolean runOwner = true;
     //#endregion
 
     @UnderTest(id="U8.3")
     public void addDogToOwner() {
-        boolean runDog;
-        boolean runOwner;
         setNames();
-        runDog = findDog();
-        runOwner = findOwner();
+        initialiseDogAndOwner();
         
         if (!runDog || !runOwner) {
             System.out.println("Error: Operation Failed. Please see earlier error messages.");
@@ -34,15 +33,34 @@ public class AssignmentEightPointThree {
         }
     }
 
+    private void initialiseDogAndOwner() {
+        if (runDog) {
+            runDog = findDog();
+        } else {
+            System.out.println("Error: No dog entered.");
+        }
+        if (runOwner) {
+            runOwner = findOwner();
+        } else {
+            System.out.println("Error: No owner entered.");
+        }
+    }
+
     /**
      * Sets the names of dog and owner. <br></br>
      * Removed from addDogToOwner() to declutter.
      */
     private void setNames() {
         nameOfDog = reader.readString("Namn på hunden");
-        nameOfDog = emptyStringCheck(nameOfDog, "Namn på hunden");
+        if (nameOfDog == null || nameOfDog.equals("")) {
+            runDog = false;
+        }
+        // nameOfDog = emptyStringCheck(nameOfDog, "Namn på hunden");
         nameOfOwner = reader.readString("Namn på ägaren");
-        nameOfOwner = emptyStringCheck(nameOfOwner, "Namn på ägare");
+        if (nameOfOwner == null || nameOfDog.equals("")) {
+            runOwner = false;
+        }
+        // nameOfOwner = emptyStringCheck(nameOfOwner, "Namn på ägare");
     }
 
     /**
