@@ -11,6 +11,9 @@ public class AssignmentEightPointOne {
     private Reader reader = new Reader();
     //#endregion
 
+    /**
+     * Creates and adds instance of Class Owner to local ArrayList<Owner>.
+     */
     @UnderTest(id="U8.1")
     public void addOwner() {
         String name = reader.readString("Name");
@@ -19,7 +22,7 @@ public class AssignmentEightPointOne {
             System.out.println("Error: Name cannot be empty");
             name = reader.readString("Name");
         }
-        
+
         owners.add(new Owner(name));
     }
 }
