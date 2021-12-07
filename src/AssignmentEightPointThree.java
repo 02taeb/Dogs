@@ -21,24 +21,23 @@ public class AssignmentEightPointThree {
 
     @UnderTest(id="U8.3")
     public void addDogToOwner() {
-        setNames();
-        initialiseDogAndOwner();
+        setDogName();
+        initialiseDog();
+        if (runDog) {
+            setOwnerName();
+            initialiseOwner();
+        }
         
         if (!runDog || !runOwner) {
             System.out.println("Error: Operation Failed. Please see earlier error messages.");
-        } else if (!owner.hasDog(dog)) {
+        } else if (!owner.hasDog(dog) && !dog.isOwned()) {
             owner.addDogToOwner(dog);
         } else {
             System.out.println("Error: This dog is already owned by this owner.");
         }
     }
 
-    private void initialiseDogAndOwner() {
-        if (runDog) {
-            runDog = findDog();
-        } else {
-            System.out.println("Error: No dog entered.");
-        }
+    private void initialiseOwner() {
         if (runOwner) {
             runOwner = findOwner();
         } else {
@@ -46,16 +45,26 @@ public class AssignmentEightPointThree {
         }
     }
 
-    /**
-     * Sets the names of dog and owner. <br></br>
-     * Removed from addDogToOwner() to declutter.
-     */
-    private void setNames() {
+    private void initialiseDog() {
+        if (runDog) {
+            runDog = findDog();
+        } else {
+            System.out.println("Error: No dog entered.");
+        }
+    }
+
+    private void setDogName() {
         nameOfDog = reader.readString("Namn på hunden");
         if (nameOfDog == null || nameOfDog.equals("")) {
             runDog = false;
         }
         // nameOfDog = emptyStringCheck(nameOfDog, "Namn på hunden");
+    }
+
+    /**
+     * Sets the name of owner.
+     */
+    private void setOwnerName() {
         nameOfOwner = reader.readString("Namn på ägaren");
         if (nameOfOwner == null || nameOfDog.equals("")) {
             runOwner = false;
@@ -85,7 +94,12 @@ public class AssignmentEightPointThree {
         for (int i = 0; i < dogs.size(); i++) {
             if (dogs.get(i).getName().equalsIgnoreCase(nameOfDog)) {
                 dog = dogs.get(i);
-                return true;
+                if (!dog.isOwned()) {
+                    return true;
+                } else {
+                    System.out.println("Error: Dog already owned");
+                    return false;
+                }
             }
         }
 
