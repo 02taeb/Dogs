@@ -29,6 +29,9 @@ public class AssignmentEightPointFour {
      */
     @UnderTest(id = "U8.4")
     public void listOwnersAndDogs() {
+        if (owners.size() == 0) {
+            System.out.println("Error: No owners registered.");
+        }
         for (Owner owner : owners) {
             System.out.println(owner);
             owner.listOwnedDogs();
