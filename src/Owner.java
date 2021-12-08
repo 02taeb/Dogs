@@ -53,6 +53,42 @@ public class Owner {
     }
 
     /**
+     * Removes a dog from this owner.
+     * @param dog Dog to remove.
+     */
+    @UnderTest(id="U8.6")
+    public void removeDogFromOwner(Dog dog) {
+        for (int i = 0; i < ownedDogs.length; i++) {
+            if (ownedDogs[i] == dog) {
+                decreaseArray(i);
+                dog.removeOwner();
+                return;
+            }
+        }
+    }
+
+    /**
+     * Removes a space in the ownedDogs[].
+     * @param removeDogIndex Space that will be removed (actually value that will be "forgotten").
+     */
+    private void decreaseArray(int removeDogIndex) {
+        for (int i = removeDogIndex; i < ownedDogs.length - 1; i++) {
+            ownedDogs[i] = ownedDogs[i + 1];
+        }
+        
+        Dog[] middleStepArr = new Dog[ownedDogs.length - 1];
+        for (int i = 0; i < middleStepArr.length; i++) {
+            middleStepArr[i] = ownedDogs[i];
+        }
+
+        ownedDogs = new Dog[ownedDogs.length - 1];
+
+        for (int i = 0; i < middleStepArr.length; i++) {
+            ownedDogs[i] = middleStepArr[i];
+        }
+    }
+
+    /**
      * Will "expand" local Dog[] ownedDogs if new dog is to be added.
      */
     private void expandArray() {

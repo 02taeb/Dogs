@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
 /**
- * AssignmentEightPointFour on iLearnJava
+ * AssignmentEightPointSix on iLearn PROG1.
  * @author Lucas Ilstedt, luil7872
  */
-public class AssignmentEightPointFour {
-    //#region Instance Variables U8.4
-    @UnderTest(id = "dogs")
-    private ArrayList<Dog> dogs = new ArrayList<>();
-    @UnderTest(id = "owners")
+public class AssignmentEightPointSix {
+    //#region Instance Variables U8.6
+    @UnderTest(id="owners")
     private ArrayList<Owner> owners = new ArrayList<>();
+    @UnderTest(id="dogs")
+    private ArrayList<Dog> dogs = new ArrayList<>();
     private Reader reader = new Reader();
     //#endregion
     //#region Instance Variables U8.3
@@ -25,10 +25,33 @@ public class AssignmentEightPointFour {
     //#endregion
 
     /**
+     * Removes a Dog from their Owner.
+     */
+    @UnderTest(id="U8.6")
+    public void removeDogFromOwner() {
+        String dogName = reader.readString("Namn på hund att ta bort");
+        if (dogName == null || dogName.equals("")) {
+            System.out.println("Error: This String cannot be empty");
+        } else {
+            for (Dog dog : dogs) {
+                if (dogName.equalsIgnoreCase(dog.getName())) {
+                    if (!dog.removeOwner()){
+                        System.out.printf("Error: %s is not owned by anyone.", dog.getName());
+                    }
+                    return;
+                }
+            }
+            System.out.println("Error: no such dog.");
+        }
+    } 
+
+    // All earlier public methods made private for this assigment.
+    //#region LOC from U8.4
+    /**
      * Returns all owners and the name of their dogs.
      */
     @UnderTest(id = "U8.4")
-    public void listOwnersAndDogs() {
+    private void listOwnersAndDogs() {
         if (owners.size() == 0) {
             System.out.println("Error: No owners registered.");
         }
@@ -37,13 +60,14 @@ public class AssignmentEightPointFour {
             owner.listOwnedDogs();
         }
     }
+    //#endregion
 
     //#region LOC from U7.2
     /**
      * Asks for a tail length and outputs dogs with given tail length in local ArrayList.
      */
     @UnderTest(id="U7.2")
-    public void handleInput() {
+    private void handleInput() {
         if (!dogs.isEmpty()) {
             tailLengthMin = reader.readDouble("Kortast svanslängd att visa");
             ArrayList<Dog> dogsWithTailLength = searchForDogsByTailSize(tailLengthMin);
@@ -85,7 +109,7 @@ public class AssignmentEightPointFour {
      * Adds a dog to an owner. Both should exist in local ArrayList<>'s.
      */
     @UnderTest(id = "U8.3")
-    public void addDogToOwner() {
+    private void addDogToOwner() {
         setDogName();
         initialiseDog();
         // Should only ask for owner if dog is processed correctly.
