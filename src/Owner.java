@@ -83,6 +83,7 @@ public class Owner {
      * @param thisDog Dog to check.
      * @return boolean true if thisDog is owned by this Owner, else false.
      */
+    @UnderTest(id="U8.5")
     public boolean hasDog(Dog thisDog) {
         for (int i = 0; i < ownedDogs.length; i++) {
             if (ownedDogs[i].getName().equalsIgnoreCase(thisDog.getName())) {
