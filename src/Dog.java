@@ -147,7 +147,7 @@ public class Dog {
      * Cannot return null since that will throw a NullPointerException when calling Owner.getName() from this.
      */
     public Owner getOwner() {
-        Owner noOwner = null;
+        Owner noOwner = new Owner(String.format("%s ägs inte av någon.", name));
         if (isOwned) {
             return owner;
         } else {
