@@ -70,6 +70,15 @@ public class Owner {
     }
 
     /**
+     * Prints all owned Dogs with the Dog.toString() method.
+     */
+    public void listOwnedDogs() {
+        for (Dog dog : ownedDogs) {
+            System.out.println(dog);
+        }
+    }
+
+    /**
      * Checks if this Owner owns thisDog.
      * @param thisDog Dog to check.
      * @return boolean true if thisDog is owned by this Owner, else false.

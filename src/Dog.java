@@ -84,7 +84,7 @@ public class Dog {
      */
     @Override
     public String toString() {
-        return String.format("name=%s, breed=%s, age=%s, weight=%s, tailLength=%s", name, breed, age, weight, tailLength);
+        return String.format("%s, (%s, %s år, %s kilo, %s cm svans) ägd av %s.", name, breed, age, weight, tailLength, owner);
     }
 
 
@@ -139,14 +139,15 @@ public class Dog {
 
     /**
      * Gets the owner for this Dog.
-     * @return Owner if owned, Owner with vlaue null if not owned.
+     * @return Owner if owned, Owner with name "This dog not owned" if not owned.
+     * Cannot return null since that will throw a NullPointerException when calling Owner.getName() from this.
      */
     public Owner getOwner() {
-        Owner nullOwner = null;
+        Owner noOwner = new Owner(String.format("%s ägs inte av någon.%n", name));
         if (isOwned) {
             return owner;
         } else {
-            return nullOwner;
+            return noOwner;
         }
     }
 

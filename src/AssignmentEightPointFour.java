@@ -26,7 +26,10 @@ public class AssignmentEightPointFour {
 
     @UnderTest(id = "U8.4")
     public void listOwnersAndDogs() {
-        
+        for (Owner owner : owners) {
+            System.out.println(owner);
+            owner.listOwnedDogs();
+        }
     }
 
     //#region LOC from U7.2
