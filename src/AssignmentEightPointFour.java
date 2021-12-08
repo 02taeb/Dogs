@@ -24,6 +24,9 @@ public class AssignmentEightPointFour {
     private double tailLengthMin;
     //#endregion
 
+    /**
+     * Returns all owners and the name of their dogs.
+     */
     @UnderTest(id = "U8.4")
     public void listOwnersAndDogs() {
         for (Owner owner : owners) {
