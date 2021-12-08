@@ -84,7 +84,11 @@ public class Dog {
      */
     @Override
     public String toString() {
-        return String.format("%s, (%s, %s år, %s kilo, %s cm svans) ägd av %s.", name, breed, age, weight, tailLength, owner);
+        if (isOwned) {
+            return String.format("%s, (%s, %s år, %s kilo, %s cm svans) ägd av %s.", name, breed, age, weight, tailLength, owner);
+        } else {
+            return String.format("%s, (%s, %s år, %s kilo, %s cm svans).", name, breed, age, weight, tailLength);
+        }
     }
 
 
@@ -143,7 +147,7 @@ public class Dog {
      * Cannot return null since that will throw a NullPointerException when calling Owner.getName() from this.
      */
     public Owner getOwner() {
-        Owner noOwner = new Owner(String.format("%s ägs inte av någon.%n", name));
+        Owner noOwner = null;
         if (isOwned) {
             return owner;
         } else {
