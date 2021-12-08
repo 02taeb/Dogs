@@ -22,6 +22,9 @@ public class AssignmentEightPointSeven {
     private boolean runOwner = true;
     // #endregion
 
+    /**
+     * Removes an owner from the system (actually local ArrayList<Owner>).
+     */
     @UnderTest(id = "U8.7")
     public void removeOwner() {
         String ownerName = reader.readString("Namn på ägare att ta bort");
@@ -41,6 +44,10 @@ public class AssignmentEightPointSeven {
         }
     }
 
+    /**
+     * Removes all Dogs in local ArrayList<Dog> owned by Owner with index i in local ArrayList<Owner>.
+     * @param i index for owner.
+     */
     private void removeOwnedDogs(int i) {
         ArrayList<Dog> dogsToRemove = new ArrayList<>();
         for (int j = 0; j < dogs.size(); j++) {
