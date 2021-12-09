@@ -1,14 +1,14 @@
 // JUnit-testfallen i denna fil testar metoden för att lista alla hundar med en given svanslängd U7.2
 // För mer information se README.txt-filen
 
-import java.lang.reflect.*;
-import java.util.Arrays;
-import java.util.List;
+// import java.lang.reflect.*;
+// import java.util.Arrays;
+// import java.util.List;
 
-import org.junit.jupiter.api.*;
+// import org.junit.jupiter.api.*;
 
 
-public class AssignmentSevenPointTwoTest extends IOBaseTest {
+// public class AssignmentSevenPointTwoTest extends IOBaseTest {
 
 // 	private static final Dog SMALL = new Dog("SmallDog", "Terrier", 3, 7);
 // 	private static final Dog MEDIUM = new Dog("MediumDog", "Cross-breed", 5, 11);
@@ -59,7 +59,7 @@ public class AssignmentSevenPointTwoTest extends IOBaseTest {
 // 		testSearchMethod(new Dog[] { BIG, MEDIUM, SMALL }, 0.0, SMALL, MEDIUM, BIG);
 // 	}
 
-	// TODO: fler test ska läggas till
-	// TODO: kontrollera att felmeddelanden kommer
+// 	// TODO: fler test ska läggas till
+// 	// TODO: kontrollera att felmeddelanden kommer
 
-}
+// }
