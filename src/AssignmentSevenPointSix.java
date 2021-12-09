@@ -108,7 +108,14 @@ public class AssignmentSevenPointSix {
      *         of firstDog if dogs have same name.
      */
     private int compareByName(Dog firstDog, Dog secondDog) {
-        for (int i = 0; i < firstDog.getName().length(); i++) {
+        String shorterName;
+        if (firstDog.getName().length() > secondDog.getName().length()) {
+            shorterName = secondDog.getName();
+        } else {
+            shorterName = firstDog.getName();
+        }
+        
+        for (int i = 0; i < shorterName.length(); i++) {
             if (firstDog.getName().charAt(i) < secondDog.getName().charAt(i)) {
                 return dogs.indexOf(firstDog);
             } else if (firstDog.getName().charAt(i) > secondDog.getName().charAt(i)) {
@@ -116,10 +123,11 @@ public class AssignmentSevenPointSix {
             }
         }
 
-        // Dogs have same name or firstDog name is shorter than secondDog with same
-        // characters.
-        // Both result in firstDog being chosen as the one with earlier name.
-        return dogs.indexOf(firstDog);
+        if (shorterName.equalsIgnoreCase(firstDog.getName())) {
+            return dogs.indexOf(firstDog);
+        } else {
+            return dogs.indexOf(secondDog);
+        }
     }
 
     /**

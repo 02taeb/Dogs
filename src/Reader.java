@@ -45,8 +45,8 @@ public class Reader {
      * @param is InputStream to check.
      * @return Boolean, true if open, false if not open.
      */
-    private boolean checkForExistingStream(InputStream iS) {
-        if (inputStreams.contains(iS)) {
+    private boolean checkForExistingStream(InputStream is) {
+        if (inputStreams.contains(is)) {
             return true;
         }
 
