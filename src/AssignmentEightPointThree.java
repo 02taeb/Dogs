@@ -72,7 +72,7 @@ public class AssignmentEightPointThree {
      * Will also set runDog = false if no name is entered.
      */
     private void setDogName() {
-        nameOfDog = reader.readString("Namn på hunden");
+        nameOfDog = reader.readString("Namn på hunden", false);
         if (nameOfDog == null || nameOfDog.equals("")) {
             runDog = false;
         }
@@ -83,7 +83,7 @@ public class AssignmentEightPointThree {
      * Will also set runOwner = false if no name is entered.
      */
     private void setOwnerName() {
-        nameOfOwner = reader.readString("Namn på ägaren");
+        nameOfOwner = reader.readString("Namn på ägaren", false);
         if (nameOfOwner == null || nameOfDog.equals("")) {
             runOwner = false;
         }

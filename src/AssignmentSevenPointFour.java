@@ -21,7 +21,7 @@ public class AssignmentSevenPointFour {
      */
     @UnderTest(id="U7.4")
     public void increaseAge() {
-        String dogName = reader.readString("Vad heter hunden");
+        String dogName = reader.readString("Vad heter hunden", false);
         Dog dog = findDog(dogName);
 
         if (dog == null) {

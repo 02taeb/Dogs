@@ -21,7 +21,7 @@ public class AssignmentSevenPointFive {
      */
     @UnderTest(id="U7.5")
     public void removeDog() {
-        String dogName = reader.readString("Vad heter hunden");
+        String dogName = reader.readString("Vad heter hunden", false);
         Dog dog = findDog(dogName);
 
         if (dog == null) {

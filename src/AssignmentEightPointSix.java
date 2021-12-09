@@ -29,7 +29,7 @@ public class AssignmentEightPointSix {
      */
     @UnderTest(id="U8.6")
     public void removeDogFromOwner() {
-        String dogName = reader.readString("Namn på hund att ta bort");
+        String dogName = reader.readString("Namn på hund att ta bort", false);
         if (dogName == null || dogName.equals("")) {
             System.out.println("Error: This String cannot be empty");
         } else {
@@ -157,7 +157,7 @@ public class AssignmentEightPointSix {
      * Will also set runDog = false if no name is entered.
      */
     private void setDogName() {
-        nameOfDog = reader.readString("Namn på hunden");
+        nameOfDog = reader.readString("Namn på hunden", false);
         if (nameOfDog == null || nameOfDog.equals("")) {
             runDog = false;
         }
@@ -168,7 +168,7 @@ public class AssignmentEightPointSix {
      * Will also set runOwner = false if no name is entered.
      */
     private void setOwnerName() {
-        nameOfOwner = reader.readString("Namn på ägaren");
+        nameOfOwner = reader.readString("Namn på ägaren", false);
         if (nameOfOwner == null || nameOfDog.equals("")) {
             runOwner = false;
         }

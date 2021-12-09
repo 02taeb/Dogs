@@ -16,12 +16,7 @@ public class AssignmentEightPointOne {
      */
     @UnderTest(id="U8.1")
     public void addOwner() {
-        String name = reader.readString("Name");
-        
-        while (name == null || name.equals("")) {
-            System.out.println("Error: Name cannot be empty");
-            name = reader.readString("Name");
-        }
+        String name = reader.readString("Namn", true);
 
         owners.add(new Owner(name));
     }

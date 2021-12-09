@@ -19,28 +19,11 @@ public class AssignmentSevenPointThree {
         nullDog = null;
         
         for (Dog dog : dogs) {
-            if (dog.getName().equals(nameCheck(dogName))) {
+            if (dog.getName().equalsIgnoreCase(dogName.trim())) {
                 return dog;
             }
         }
         
         return nullDog;
-    }
-
-    /**
-     * Formats a string, making all characters except the first one lower case and removing spaces at beginning and end.
-     * @param uneditedString String to format.
-     * @return Formatted String.
-     */
-    private String nameCheck(String uneditedString) { 
-        String editedString = uneditedString.toLowerCase();
-        editedString = editedString.trim();
-
-        if (editedString.equals("") || editedString.equals(null)) {
-            return "";
-        }
-
-        editedString = String.valueOf(editedString.charAt(0)).toUpperCase() + editedString.substring(1);
-        return editedString;
     }
 }
