@@ -114,8 +114,7 @@ public class Dog {
     @Override
     public String toString() {
         if (isOwned) {
-            return String.format("%s, (%s, %s år, %s kilo, %s cm svans) ägd av %s.", name, breed, age, weight,
-                    tailLength, owner);
+            return String.format("%s, (%s, %s år, %s kilo, %s cm svans) ägd av %s.", name, breed, age, weight, tailLength, owner.toString());
         } else {
             return String.format("%s, (%s, %s år, %s kilo, %s cm svans).", name, breed, age, weight, tailLength);
         }
@@ -197,7 +196,7 @@ public class Dog {
         String editedString = uneditedString.toLowerCase();
         editedString = editedString.trim();
 
-        if (editedString.equals("") || editedString.equals(null)) {
+        if (editedString.equalsIgnoreCase("") || editedString.equalsIgnoreCase(null)) {
             return "";
         }
 

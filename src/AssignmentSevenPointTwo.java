@@ -28,8 +28,7 @@ public class AssignmentSevenPointTwo {
             }
 
             for (Dog dog : dogsWithTailLength) {
-                System.out.printf("* %s (%s, %s år, %s kilo, %s cm svans.)%n", dog.getName(), dog.getBreed(),
-                        dog.getAge(), dog.getWeight(), dog.getTailLength());
+                System.out.println(dog.toString());
             }
         } else {
             System.out.println("Error: No dogs in register");

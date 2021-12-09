@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * AssignmentEightPointFour on iLearnJava
+ * AssignmentEightPointFour on iLearn PROG1.
  * @author Lucas Ilstedt, luil7872
  */
 public class AssignmentEightPointFour {
@@ -33,28 +33,28 @@ public class AssignmentEightPointFour {
             System.out.println("Error: No owners registered.");
         }
         for (Owner owner : owners) {
-            System.out.println(owner);
+            System.out.println(owner.toString());
             owner.listOwnedDogs();
         }
     }
 
     //#region LOC from U7.2
     /**
-     * Asks for a tail length and outputs dogs with given tail length in local ArrayList.
+     * Asks for a tail length and outputs dogs with given tail length in local
+     * ArrayList<Dog>.
      */
-    @UnderTest(id="U7.2")
-    public void handleInput() {
+    @UnderTest(id = "U7.2")
+    private void handleInput() {
         if (!dogs.isEmpty()) {
             tailLengthMin = reader.readDouble("Kortast svanslängd att visa");
             ArrayList<Dog> dogsWithTailLength = searchForDogsByTailSize(tailLengthMin);
-            
+
             if (dogsWithTailLength.isEmpty()) {
                 System.out.println("Error: No dogs with given tail length in register");
             }
-            
+
             for (Dog dog : dogsWithTailLength) {
-                // System.out.println("* " + dog.getName() + "(" + dog.getBreed() + ", " + dog.getAge() + " år, " + dog.getWeight() + " kilo, " + dog.getTailLength() + " cm svans)");
-                System.out.printf("* %s (%s, %s år, %s kilo, %s cm svans.) ägd av %s%n", dog.getName(), dog.getBreed(), dog.getAge(), dog.getWeight(), dog.getTailLength(), dog.getOwner().getName());
+                System.out.println(dog.toString());
             }
         } else {
             System.out.println("Error: No dogs in register");
@@ -62,11 +62,13 @@ public class AssignmentEightPointFour {
     }
 
     /**
-     * Gets all the dogs with given tail length in local arraylist and returns them in new arraylist.
+     * Gets all the dogs with given tail length in local ArrayList<Dog> and returns
+     * them in new ArrayList<Dog>.
+     * 
      * @param tailLengthCheck double, Tail length to check.
-     * @return ArrayList<Dog> with tail length.
+     * @return ArrayList<Dog> of Dogs with tail length.
      */
-    @UnderTest(id="U7.2-extra")
+    @UnderTest(id = "U7.2-extra")
     private ArrayList<Dog> searchForDogsByTailSize(double tailLengthCheck) {
         ArrayList<Dog> dogsWithTailLength = new ArrayList<>();
 
@@ -85,7 +87,7 @@ public class AssignmentEightPointFour {
      * Adds a dog to an owner. Both should exist in local ArrayList<>'s.
      */
     @UnderTest(id = "U8.3")
-    public void addDogToOwner() {
+    private void addDogToOwner() {
         setDogName();
         initialiseDog();
         // Should only ask for owner if dog is processed correctly.
@@ -94,7 +96,6 @@ public class AssignmentEightPointFour {
             initialiseOwner();
         }
 
-        // Check if both dog and owner have been processed correctly.
         if (!runDog || !runOwner) {
             System.out.println("Error: Operation Failed. Please see earlier error messages.");
         } else if (!owner.hasDog(dog) && !dog.isOwned()) {
@@ -105,14 +106,13 @@ public class AssignmentEightPointFour {
     }
 
     /**
-     * Will run findOwner() if runOwner is true.
-     * Else will print error.
+     * Sets nameOfDog.
+     * Will also set runDog = false if no name is entered.
      */
-    private void initialiseOwner() {
-        if (runOwner) {
-            runOwner = findOwner();
-        } else {
-            System.out.println("Error: No owner entered.");
+    private void setDogName() {
+        nameOfDog = reader.readString("Namn på hunden", false);
+        if (nameOfDog == null || nameOfDog.equalsIgnoreCase("")) {
+            runDog = false;
         }
     }
 
@@ -126,45 +126,6 @@ public class AssignmentEightPointFour {
         } else {
             System.out.println("Error: No dog entered.");
         }
-    }
-
-    /**
-     * Sets nameOfDog.
-     * Will also set runDog = false if no name is entered.
-     */
-    private void setDogName() {
-        nameOfDog = reader.readString("Namn på hunden", false);
-        if (nameOfDog == null || nameOfDog.equals("")) {
-            runDog = false;
-        }
-    }
-
-    /**
-     * Sets nameOfOwner.
-     * Will also set runOwner = false if no name is entered.
-     */
-    private void setOwnerName() {
-        nameOfOwner = reader.readString("Namn på ägaren", false);
-        if (nameOfOwner == null || nameOfDog.equals("")) {
-            runOwner = false;
-        }
-    }
-
-    /**
-     * Finds an owner in local ArrayList<Owner>.
-     * 
-     * @return boolean true if owner found, false if no owner found.
-     */
-    private boolean findOwner() {
-        for (int i = 0; i < owners.size(); i++) {
-            if (owners.get(i).getName().equalsIgnoreCase(nameOfOwner)) {
-                owner = owners.get(i);
-                return true;
-            }
-        }
-
-        System.out.println("Error: No such owner in registry.");
-        return false;
     }
 
     /**
@@ -187,6 +148,46 @@ public class AssignmentEightPointFour {
         }
 
         System.out.println("Error: No such dog in registry.");
+        return false;
+    }
+
+    /**
+     * Sets nameOfOwner.
+     * Will also set runOwner = false if no name is entered.
+     */
+    private void setOwnerName() {
+        nameOfOwner = reader.readString("Namn på ägaren", false);
+        if (nameOfOwner == null || nameOfDog.equalsIgnoreCase("")) {
+            runOwner = false;
+        }
+    }
+
+    /**
+     * Will run findOwner() if runOwner is true.
+     * Else will print error.
+     */
+    private void initialiseOwner() {
+        if (runOwner) {
+            runOwner = findOwner();
+        } else {
+            System.out.println("Error: No owner entered.");
+        }
+    }
+
+    /**
+     * Finds an owner in local ArrayList<Owner>.
+     * 
+     * @return boolean true if owner found, false if no owner found.
+     */
+    private boolean findOwner() {
+        for (int i = 0; i < owners.size(); i++) {
+            if (owners.get(i).getName().equalsIgnoreCase(nameOfOwner)) {
+                owner = owners.get(i);
+                return true;
+            }
+        }
+
+        System.out.println("Error: No such owner in registry.");
         return false;
     }
     //#endregion
