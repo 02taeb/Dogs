@@ -45,7 +45,9 @@ public class AssignmentEightPointSeven {
     }
 
     /**
-     * Removes all Dogs in local ArrayList<Dog> owned by Owner with index i in local ArrayList<Owner>.
+     * Removes all Dogs in local ArrayList<Dog> owned by Owner with index i in local
+     * ArrayList<Owner>.
+     * 
      * @param i index for owner.
      */
     private void removeOwnedDogs(int i) {
@@ -55,6 +57,7 @@ public class AssignmentEightPointSeven {
                 dogsToRemove.add(dogs.get(j));
             }
         }
+        
         for (int j = 0; j < dogsToRemove.size(); j++) {
             for (int k = 0; k < dogs.size(); k++) {
                 if (dogs.get(k) == dogsToRemove.get(j)) {
@@ -78,7 +81,6 @@ public class AssignmentEightPointSeven {
             initialiseOwner();
         }
 
-        // Check if both dog and owner have been processed correctly.
         if (!runDog || !runOwner) {
             System.out.println("Error: Operation Failed. Please see earlier error messages.");
         } else if (!owner.hasDog(dog) && !dog.isOwned()) {
@@ -89,14 +91,13 @@ public class AssignmentEightPointSeven {
     }
 
     /**
-     * Will run findOwner() if runOwner is true.
-     * Else will print error.
+     * Sets nameOfDog.
+     * Will also set runDog = false if no name is entered.
      */
-    private void initialiseOwner() {
-        if (runOwner) {
-            runOwner = findOwner();
-        } else {
-            System.out.println("Error: No owner entered.");
+    private void setDogName() {
+        nameOfDog = reader.readString("Namn på hunden", false);
+        if (nameOfDog == null || nameOfDog.equalsIgnoreCase("")) {
+            runDog = false;
         }
     }
 
@@ -110,45 +111,6 @@ public class AssignmentEightPointSeven {
         } else {
             System.out.println("Error: No dog entered.");
         }
-    }
-
-    /**
-     * Sets nameOfDog.
-     * Will also set runDog = false if no name is entered.
-     */
-    private void setDogName() {
-        nameOfDog = reader.readString("Namn på hunden", false);
-        if (nameOfDog == null || nameOfDog.equals("")) {
-            runDog = false;
-        }
-    }
-
-    /**
-     * Sets nameOfOwner.
-     * Will also set runOwner = false if no name is entered.
-     */
-    private void setOwnerName() {
-        nameOfOwner = reader.readString("Namn på ägaren", false);
-        if (nameOfOwner == null || nameOfDog.equals("")) {
-            runOwner = false;
-        }
-    }
-
-    /**
-     * Finds an owner in local ArrayList<Owner>.
-     * 
-     * @return boolean true if owner found, false if no owner found.
-     */
-    private boolean findOwner() {
-        for (int i = 0; i < owners.size(); i++) {
-            if (owners.get(i).getName().equalsIgnoreCase(nameOfOwner)) {
-                owner = owners.get(i);
-                return true;
-            }
-        }
-
-        System.out.println("Error: No such owner in registry.");
-        return false;
     }
 
     /**
@@ -171,6 +133,46 @@ public class AssignmentEightPointSeven {
         }
 
         System.out.println("Error: No such dog in registry.");
+        return false;
+    }
+
+    /**
+     * Sets nameOfOwner.
+     * Will also set runOwner = false if no name is entered.
+     */
+    private void setOwnerName() {
+        nameOfOwner = reader.readString("Namn på ägaren", false);
+        if (nameOfOwner == null || nameOfDog.equalsIgnoreCase("")) {
+            runOwner = false;
+        }
+    }
+
+    /**
+     * Will run findOwner() if runOwner is true.
+     * Else will print error.
+     */
+    private void initialiseOwner() {
+        if (runOwner) {
+            runOwner = findOwner();
+        } else {
+            System.out.println("Error: No owner entered.");
+        }
+    }
+
+    /**
+     * Finds an owner in local ArrayList<Owner>.
+     * 
+     * @return boolean true if owner found, false if no owner found.
+     */
+    private boolean findOwner() {
+        for (int i = 0; i < owners.size(); i++) {
+            if (owners.get(i).getName().equalsIgnoreCase(nameOfOwner)) {
+                owner = owners.get(i);
+                return true;
+            }
+        }
+
+        System.out.println("Error: No such owner in registry.");
         return false;
     }
     // #endregion
