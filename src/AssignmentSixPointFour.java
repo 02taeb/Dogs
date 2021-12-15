@@ -6,11 +6,6 @@
 public class AssignmentSixPointFour {
     // #region Instance Variables
     private Reader reader = new Reader();
-    private String name;
-    private String breed;
-    private int age;
-    private int weight;
-    private Dog dog;
     // #endregion
 
     /**
@@ -20,36 +15,44 @@ public class AssignmentSixPointFour {
      */
     @UnderTest(id = "U6.4")
     public Dog createDog() {
-        name = reader.readString("Vad heter hunden", true);
-        breed = reader.readString("Vilken ras är hunden", true);
-        enterAge();
-        enterWeight();
-        dog = new Dog(name, breed, age, weight);
+        String name = reader.readString("Vad heter hunden", true);
+        String breed = reader.readString("Vilken ras är hunden", true);
+        int age = enterAge();
+        int weight = enterWeight();
+        Dog dog = new Dog(name, breed, age, weight);
         return dog;
     }
 
     /**
      * Reads the age for the dog.
      */
-    private void enterAge() {
+    private int enterAge() {
+        int age;
+
         do {
             age = reader.readInt("Hur gammal är hunden");
             if (!isIntegerPositive(age)) {
                 printErrorNegativeInt();
             }
         } while (!isIntegerPositive(age));
+
+        return age;
     }
 
     /**
      * Reads the weight for the dog.
      */
-    private void enterWeight() {
+    private int enterWeight() {
+        int weight;
+        
         do {
             weight = reader.readInt("Hur mycket väger hunden");
             if (!isIntegerPositive(weight)) {
                 printErrorNegativeInt();
             }
         } while (!isIntegerPositive(weight));
+
+        return weight;
     }
 
     /**
