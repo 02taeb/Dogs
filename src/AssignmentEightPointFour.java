@@ -78,7 +78,7 @@ public class AssignmentEightPointFour {
             }
         }
 
-        return dogsWithTailLength;
+        return new ArrayList<Dog>(dogsWithTailLength);
     }
     //#endregion
 
