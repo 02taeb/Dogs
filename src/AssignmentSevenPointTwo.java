@@ -52,6 +52,6 @@ public class AssignmentSevenPointTwo {
             }
         }
 
-        return dogsWithTailLength;
+        return new ArrayList<Dog>(dogsWithTailLength);
     }
 }
