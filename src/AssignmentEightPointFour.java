@@ -21,7 +21,6 @@ public class AssignmentEightPointFour {
     private boolean runOwner = true;
     //#endregion
     //#region Instance Variables U7.2
-    private double tailLengthMin;
     //#endregion
 
     /**
@@ -45,6 +44,8 @@ public class AssignmentEightPointFour {
      */
     @UnderTest(id = "U7.2")
     private void handleInput() {
+        double tailLengthMin;
+        
         if (!dogs.isEmpty()) {
             tailLengthMin = reader.readDouble("Kortast svanslängd att visa");
             ArrayList<Dog> dogsWithTailLength = searchForDogsByTailSize(tailLengthMin);
